@@ -13,6 +13,7 @@ require("sweetalert2/dist/sweetalert2.min.css");
 require("animate.css");
 
 window.SimpleMDE = SimpleMDE;
+window.swal = swal;
 
 Vue.component('editor', Editor);
 

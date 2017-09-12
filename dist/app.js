@@ -11524,6 +11524,7 @@ __webpack_require__(46);
 __webpack_require__(48);
 
 window.SimpleMDE = _simplemde2.default;
+window.swal = _sweetalert2.default;
 
 _vue2.default.component('editor', _Editor2.default);
 
