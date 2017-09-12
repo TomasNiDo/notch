@@ -40,13 +40,6 @@
 </template>
 
 <script>
-import swal from 'sweetalert2';
-
-require("normalize.css");
-require("milligram");
-require("sweetalert2/dist/sweetalert2.min.css");
-require("animate.css");
-
 const SKEY = "NOTCH";
 
 export default {
