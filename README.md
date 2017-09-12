@@ -7,3 +7,9 @@ A simple notes manager chrome extension built with VueJS. An output by following
 - Load unpacked extension
 - Specify the `dist` directory
 - voilà
+
+# Extending The Extension
+- `yarn install`
+
+# Test
+- TODO
