@@ -5,7 +5,7 @@
 
 <script>
 export default {
-    props: ['value'],
+    props: ['value', 'preview'],
 
     methods: {
         initEditor(el, val) {
@@ -19,7 +19,6 @@ export default {
                 status: false,
                 autoDownloadFontAwesome: true,
                 forceSync: true,
-                showIcons: ["code", "table"],
             });
          }
      },
@@ -36,6 +35,7 @@ export default {
         });
 
         this.md = md;
+        if (this.preview) this.md.togglePreview();
     }
 };
  </script>

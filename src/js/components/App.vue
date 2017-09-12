@@ -24,7 +24,7 @@
                     </div>
 
                     <transition name="animated" mode="out-in" enter-active-class="animated fadeIn">
-                        <editor v-if='selected' v-model='selected.body' :key="selected.id"></editor>
+                        <editor v-if="selected" v-model="selected.body" :key="selected.id" :preview="preview"></editor>
                     </transition>
 
                     <p class="float-right">
@@ -46,20 +46,23 @@ export default {
     data() {
         return {
             notes: [],
-            selected: null
+            selected: null,
+            preview: true,
         };
     },
 
     methods: {
         addNote() {
-            const note = { id: this.guid(), body: '# ' };
+            this.preview = false;
+            const note = { id: this.guid(), body: '# New Note' };
             this.notes.unshift(note);
-            this.selectNote(note);
+            this.selected = note;
             this.save(this.notes);
         },
 
         selectNote(note) {
             if (note === this.selected) return;
+            this.preview = true;
             this.selected = note;
         },
 

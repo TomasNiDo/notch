@@ -19574,20 +19574,23 @@ exports.default = {
     data: function data() {
         return {
             notes: [],
-            selected: null
+            selected: null,
+            preview: true
         };
     },
 
 
     methods: {
         addNote: function addNote() {
-            var note = { id: this.guid(), body: '# ' };
+            this.preview = false;
+            var note = { id: this.guid(), body: '# New Note' };
             this.notes.unshift(note);
-            this.selectNote(note);
+            this.selected = note;
             this.save(this.notes);
         },
         selectNote: function selectNote(note) {
             if (note === this.selected) return;
+            this.preview = true;
             this.selected = note;
         },
         save: function save(notes) {
@@ -19739,6 +19742,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }, [(_vm.selected) ? _c('editor', {
     key: _vm.selected.id,
+    attrs: {
+      "preview": _vm.preview
+    },
     model: {
       value: (_vm.selected.body),
       callback: function($$v) {
@@ -19836,7 +19842,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-    props: ['value'],
+    props: ['value', 'preview'],
 
     methods: {
         initEditor: function initEditor(el, val) {
@@ -19849,8 +19855,7 @@ exports.default = {
                 toolbarTips: true,
                 status: false,
                 autoDownloadFontAwesome: true,
-                forceSync: true,
-                showIcons: ["code", "table"]
+                forceSync: true
             });
         }
     },
@@ -19869,6 +19874,7 @@ exports.default = {
         });
 
         this.md = md;
+        if (this.preview) this.md.togglePreview();
     }
 };
 
