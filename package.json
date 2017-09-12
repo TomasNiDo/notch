@@ -1,5 +1,6 @@
 {
-  "name": "simple-notch-manager",
+  "name": "notch",
+  "author": "verzatiletom",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
