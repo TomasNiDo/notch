@@ -13,7 +13,7 @@
                             :class="{ active: note === selected }"
                             @click="selectNote(note)"
                         >
-                            <span class="note-item" :id="note.id">{{ note.body }}</span>
+                            <span class="note-item" :id="note.id">{{ note.body | truncate(30) }}</span>
                         </li>
                     </ul>
                 </div>
@@ -125,6 +125,28 @@ export default {
         }
     },
 
+    filters: {
+        truncate(text, length, clamp) {
+            clamp = clamp || '...';
+            length = length || 30;
+
+            if (text.length <= length) return text;
+
+            var tcText = text.slice(0, length - clamp.length);
+            var last = tcText.length - 1;
+
+
+            while (last > 0 && tcText[last] !== ' ' && tcText[last] !== clamp[0]) last -= 1;
+
+            // Fix for case when text dont have any `space`
+            last = last || length - clamp.length;
+
+            tcText =  tcText.slice(0, last);
+
+            return tcText + clamp;
+        }
+    },
+
     mounted() {
         this.loadNotes();
 
@@ -142,6 +164,10 @@ export default {
 
   .notes.row {
     margin-top: 50px;
+  }
+
+  .CodeMirror {
+    height: 500px;
   }
 
   li.active span {

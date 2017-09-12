@@ -12,6 +12,7 @@ require("simplemde/dist/simplemde.min.css");
 require("sweetalert2/dist/sweetalert2.min.css");
 require("animate.css");
 
+window.Vue = Vue;
 window.SimpleMDE = SimpleMDE;
 window.swal = swal;
 

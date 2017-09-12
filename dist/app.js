@@ -11523,6 +11523,7 @@ __webpack_require__(44);
 __webpack_require__(46);
 __webpack_require__(48);
 
+window.Vue = _vue2.default;
 window.SimpleMDE = _simplemde2.default;
 window.swal = _sweetalert2.default;
 
@@ -19251,7 +19252,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\nh1 { font-size: 22px;\n}\n.notes.row {\n  margin-top: 50px;\n}\nli.active span {\n  color: #9b4dca;\n}\n.note-area {\n  width: 100%;\n}\n.note-item {\n  cursor: pointer;\n}\n.swal2-confirm, .swal2-cancel {\n  text-transform: none;\n  letter-spacing: 0;\n  height: auto;\n}\n", ""]);
+exports.push([module.i, "\nh1 { font-size: 22px;\n}\n.notes.row {\n  margin-top: 50px;\n}\n.CodeMirror {\n  height: 500px;\n}\nli.active span {\n  color: #9b4dca;\n}\n.note-area {\n  width: 100%;\n}\n.note-item {\n  cursor: pointer;\n}\n.swal2-confirm, .swal2-cancel {\n  text-transform: none;\n  letter-spacing: 0;\n  height: auto;\n}\n", ""]);
 
 // exports
 
@@ -19651,6 +19652,27 @@ exports.default = {
         }
     },
 
+    filters: {
+        truncate: function truncate(text, length, clamp) {
+            clamp = clamp || '...';
+            length = length || 30;
+
+            if (text.length <= length) return text;
+
+            var tcText = text.slice(0, length - clamp.length);
+            var last = tcText.length - 1;
+
+            while (last > 0 && tcText[last] !== ' ' && tcText[last] !== clamp[0]) {
+                last -= 1;
+            } // Fix for case when text dont have any `space`
+            last = last || length - clamp.length;
+
+            tcText = tcText.slice(0, last);
+
+            return tcText + clamp;
+        }
+    },
+
     mounted: function mounted() {
         this.loadNotes();
 
@@ -19696,7 +19718,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "id": note.id
       }
-    }, [_vm._v(_vm._s(note.body))])])
+    }, [_vm._v(_vm._s(_vm._f("truncate")(note.body, 30)))])])
   }))]), _vm._v(" "), _c('div', {
     staticClass: "column column-77",
     staticStyle: {
