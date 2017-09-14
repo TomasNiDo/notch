@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Simple Notes Manager",
+  "name": "Notch",
   "description": "Replace the new tab page with clean, distraction-free notes",
   "version": "1.0",
   "chrome_url_overrides" : {
