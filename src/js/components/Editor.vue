@@ -14,7 +14,7 @@ export default {
                 initialValue: val,
                 spellChecker: false,
                 placeholder: "Type here...",
-                toolbar: ["bold", "italic", "heading", "|", "unordered-list", "ordered-list", "table", "|", "quote", "code", "image", "link", "|", "preview", "guide"],
+                toolbar: ["bold", "italic", "strikethrough", "heading", "|", "unordered-list", "ordered-list", "table", "|", "quote", "code", "image", "link", "|", "preview", "guide"],
                 toolbarTips: true,
                 status: false,
                 autoDownloadFontAwesome: true,
