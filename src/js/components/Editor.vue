@@ -1,6 +1,7 @@
-<template lang="pug">
-   .note-area
-        textarea
+<template>
+   <div class="note-area">
+        <textarea></textarea>
+    </div>
 </template>
 
 <script>
