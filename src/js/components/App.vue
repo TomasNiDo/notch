@@ -42,7 +42,11 @@
 <script>
 const SKEY = "NOTCH";
 
+import Truncate from '../filters/Truncate';
+
 export default {
+    filters: { Truncate },
+
     data() {
         return {
             notes: [],
@@ -99,7 +103,7 @@ export default {
             })
         },
 
-        guid () {
+        guid() {
           return this.s4() + this.s4() + '-' + this.s4() + '-' + this.s4() + '-' +
             this.s4() + '-' + this.s4() + this.s4() + this.s4();
         },
@@ -125,28 +129,6 @@ export default {
         onChange(val, prev) {
             if (!prev) return;
             this.save(this.notes);
-        }
-    },
-
-    filters: {
-        truncate(text, length, clamp) {
-            clamp = clamp || '...';
-            length = length || 30;
-
-            if (text.length <= length) return text;
-
-            var tcText = text.slice(0, length - clamp.length);
-            var last = tcText.length - 1;
-
-
-            while (last > 0 && tcText[last] !== ' ' && tcText[last] !== clamp[0]) last -= 1;
-
-            // Fix for case when text dont have any `space`
-            last = last || length - clamp.length;
-
-            tcText =  tcText.slice(0, last);
-
-            return tcText + clamp;
         }
     },
 
