@@ -11,7 +11,6 @@ A simple notes manager chrome extension built with VueJS. An output by following
 - voilà
 
 # Extending The Extension
-- `yarn install`
-
-# Test
-- TODO
+```
+yarn install
+```
